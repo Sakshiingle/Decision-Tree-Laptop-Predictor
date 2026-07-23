@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Laptop Prediction System</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>💻 Laptop Prediction System</h1>
+
+            <p class="subtitle">
+                Predict whether a person owns a laptop using Machine Learning.
+            </p>
+
+            <form action="/predict" method="POST">
+
+                <div class="input-group">
+
+                    <label>Age</label>
+
+                    <input
+                        type="number"
+                        name="Age"
+                        placeholder="Enter Age"
+                        required
+                        min="1"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Gender</label>
+
+                    <select name="Gender" required>
+
+                        <option value="" disabled selected>Select Gender</option>
+
+                        <option value="male">Male</option>
+
+                        <option value="female">Female</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Region</label>
+
+                    <select name="Region" required>
+
+                        <option value="" disabled selected>Select Region</option>
+
+                        <option value="city">City</option>
+
+                        <option value="countryside">Countryside</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Occupation</label>
+
+                    <select name="Occupation" required>
+
+                        <option value="" disabled selected>Select Occupation</option>
+
+                        <option value="student">Student</option>
+
+                        <option value="teacher">Teacher</option>
+
+                        <option value="banker">Banker</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Income</label>
+
+                    <input
+                        type="number"
+                        name="Income"
+                        placeholder="Enter Income"
+                        required
+                        min="0"
+                    >
+
+                </div>
+
+
+                <button type="submit">
+                    Predict
+                </button>
+
+            </form>
+
+            {% if prediction_text %}
+
+            <div class="result">
+
+                <h2>{{ prediction_text }}</h2>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
